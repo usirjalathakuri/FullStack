@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aura Attire</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow-x:hidden;
+background:#fff;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+.navbar{
+background:#000 !important;
+}
+
+.navbar-brand{
+font-size:1.7rem;
+font-weight:700;
+color:#d4af37 !important;
+}
+
+.nav-link{
+color:white !important;
+margin-left:15px;
+}
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url('https://cdn.prod.website-files.com/66902b0c958b1f38e1fdbb1c/67caf3563d41bd53cfd04811_shutterstock_2440733535.jpg');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:4rem;
+font-weight:700;
+}
+
+.hero p{
+font-size:1.2rem;
+margin:20px 0;
+}
+
+.gold-btn{
+background:#d4af37;
+border:none;
+color:white;
+padding:12px 25px;
+border-radius:5px;
+}
+
+.section-title{
+text-align:center;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.category-btn{
+border:none;
+background:black;
+color:white;
+padding:12px 20px;
+margin:5px;
+border-radius:5px;
+}
+
+.category-btn:hover{
+background:#d4af37;
+}
+
+.card{
+transition:.3s;
+height:100%;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+height:300px;
+object-fit:cover;
+}
+
+.about{
+background:#f8f9fa;
+}
+
+.testimonial{
+background:#f8f9fa;
+padding:25px;
+border-radius:10px;
+height:100%;
+}
+
+.newsletter{
+background:black;
+color:white;
+padding:60px 20px;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+.cart-box{
+position:fixed;
+right:20px;
+bottom:20px;
+background:white;
+width:320px;
+max-height:400px;
+overflow-y:auto;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0,.2);
+z-index:999;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+.hero{
+height:80vh;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.cart-box{
+width:95%;
+left:10px;
+right:10px;
+bottom:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+
+<div class="container">
+
+<a class="navbar-brand" href="#">
+👑 Aura Attire
+</a>
+
+<button class="navbar-toggler"
+data-bs-toggle="collapse"
+data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#home">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#products">Products</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#about">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contact">Contact</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div>
+
+<h1>Aura Attire</h1>
+
+<p>
+Luxury Fashion Designed For Elegance
+</p>
+
+<a href="#products" class="btn gold-btn">
+Shop Collection
+</a>
+
+</div>
+
+</section>
+
+<section class="container py-5" id="products">
+
+<h2 class="section-title">
+Featured Collection
+</h2>
+
+<div class="row mb-4">
+
+<div class="col-md-6 mx-auto">
+
+<input
+type="text"
+class="form-control"
+id="searchInput"
+placeholder="Search Products...">
+
+</div>
+
+</div>
+
+<div class="text-center mb-4">
+
+<button class="category-btn"
+onclick="displayProducts(products)">
+All
+</button>
+
+<button class="category-btn"
+onclick="filterProducts('Men')">
+Men
+</button>
+
+<button class="category-btn"
+onclick="filterProducts('Women')">
+Women
+</button>
+
+<button class="category-btn"
+onclick="filterProducts('Accessories')">
+Accessories
+</button>
+
+<button class="category-btn"
+onclick="filterProducts('Formal')">
+Formal
+</button>
+
+</div>
+
+<div class="row g-4" id="productContainer">
+
+</div>
+
+</section>
+
+<section class="about py-5" id="about">
+
+<div class="container">
+
+<h2 class="section-title">
+About Aura Attire
+</h2>
+
+<p class="text-center">
+Aura Attire delivers premium fashion pieces that combine elegance,
+comfort and sophistication. Designed for modern lifestyles while
+maintaining timeless luxury.
+</p>
+
+</div>
+
+</section>
+
+<section class="container py-5">
+
+<h2 class="section-title">
+Customer Reviews
+</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="testimonial">
+★★★★★
+<br><br>
+Amazing quality and fast delivery.
+<br><br>
+- Sarah
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="testimonial">
+★★★★★
+<br><br>
+Elegant clothing and great service.
+<br><br>
+- Michael
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="testimonial">
+★★★★★
+<br><br>
+My favorite fashion store.
+<br><br>
+- Emma
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="newsletter text-center">
+
+<h2>
+Subscribe To Our Newsletter
+</h2>
+
+<p>
+Receive exclusive offers and fashion updates.
+</p>
+
+<div class="row justify-content-center">
+
+<div class="col-md-4">
+
+<input
+type="email"
+class="form-control mb-2"
+placeholder="Enter Email">
+
+<button class="btn gold-btn">
+Subscribe
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="container py-5" id="contact">
+
+<h2 class="section-title">
+Contact Us
+</h2>
+
+<div class="row justify-content-center">
+
+<div class="col-md-6">
+
+<form id="contactForm">
+
+<input
+type="text"
+id="name"
+class="form-control mb-3"
+placeholder="Name">
+
+<input
+type="email"
+id="email"
+class="form-control mb-3"
+placeholder="Email">
+
+<textarea
+id="message"
+rows="5"
+class="form-control mb-3"
+placeholder="Message"></textarea>
+
+<button class="btn btn-dark w-100">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="cart-box">
+
+<h5>
+🛒 Shopping Cart
+</h5>
+
+<div id="cartItems"></div>
+
+<hr>
+
+<h6>
+Total: $
+<span id="total">0</span>
+</h6>
+
+<button
+class="btn btn-success w-100 mt-2"
+onclick="checkout()">
+
+Checkout
+
+</button>
+
+</div>
+
+<footer>
+
+<p>
+© 2026 Aura Attire | Luxury Fashion Store
+</p>
+
+</footer>
+<script>
+
+const products = [
+
+
+{
+id:2,
+name:"Luxury Dress",
+price:150,
+category:"Women",
+image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDlJg3i0YJnVVEBW1c2PmRK3_6P_x12bGjtnlxcnD1C-fg9av3OKbn3z6r&s=10"
+},
+
+{
+id:3,
+name:"Classic Suit",
+price:180,
+category:"Formal",
+image:"https://www.minizmo.com/cdn/shop/files/B13916_03_2048x.jpg?v=1753878346"
+},
+
+{
+id:4,
+name:"Premium Handbag",
+price:95,
+category:"Accessories",
+image:"https://5.imimg.com/data5/SELLER/Default/2023/6/314069169/JT/EL/DI/189638314/premium-quality-designer-leather-hand-bag-500x500.jpeg"
+},
+
+{
+id:5,
+name:"Silk Evening Gown",
+price:220,
+category:"Women",
+image:"https://sokayri.com/wp-content/uploads/2022/07/silk-wool-evening-gown-with-pleated-waist-2.jpg"
+},
+
+{
+id:6,
+name:"Designer Coat",
+price:200,
+category:"Men",
+image:"https://frenchcrown.in/cdn/shop/collections/Designer_Suits.png?v=1775125150&width=2048"
+},
+
+{
+id:7,
+name:"Luxury Watch",
+price:350,
+category:"Accessories",
+image:"https://i5.walmartimages.com/seo/Poedagar-Top-Brand-Luxury-Men-Watch-Waterproof-Luminous-Stainless-Steel-Watches-Sport-Quartz-Clock-Mens-Date-Business-Wristwatch-Quartz-Wristwatches_9e8f9e27-a565-433d-a631-0217e7658626.5a77011a5e9db0be8848f49f56f7ce28.jpeg"
+},
+
+{
+id:8,
+name:"Formal Shirt",
+price:75,
+category:"Formal",
+image:"https://saralifestyle.com/_next/image?url=https%3A%2F%2Fprod.saralifestyle.com%2FImages%2FProducts%2FVariationWisetImage%2F456e0cc0c85e4998a2431967400bcb52.jpeg&w=1080&q=75"
+},
+
+{
+id:9,
+name:"Slim Fit Trousers",
+price:85,
+category:"Men",
+image:"https://cdn.shopify.com/s/files/1/0420/7073/7058/files/d8f8dbfd695113b88eaa38705656e410.jpg?v=1728985074&quality=80"
+},
+
+{
+id:10,
+name:"Luxury Heels",
+price:110,
+category:"Women",
+image:"https://img4.dhresource.com/webp/m/0x0/f3/albu/ys/h/03/e6944ebc-6b3b-41c9-a330-6c21138694e7.jpg"
+},
+
+{
+id:11,
+name:"Leather Belt",
+price:45,
+category:"Accessories",
+image:"https://steelandstyle.shop/cdn/shop/files/3-Photoroom_22_-Photoroom_1.jpg?v=1739746771&width=1445"
+},
+
+{
+id:12,
+name:"Wedding Suit",
+price:280,
+category:"Formal",
+image:"https://m.media-amazon.com/images/I/61ox7bhqejL._AC_SL1300_.jpg"
+}
+
+];
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+function displayProducts(productList){
+
+const container =
+document.getElementById("productContainer");
+
+container.innerHTML="";
+
+productList.forEach(product=>{
+
+container.innerHTML += `
+
+<div class="col-lg-3 col-md-6 col-sm-12">
+
+<div class="card shadow">
+
+<img src="${product.image}" class="card-img-top">
+
+<div class="card-body text-center">
+
+<h5>${product.name}</h5>
+
+<p class="fw-bold">$${product.price}</p>
+
+<p class="text-muted">
+${product.category}
+</p>
+
+<button
+class="btn btn-dark"
+onclick="addToCart(${product.id})">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+function filterProducts(category){
+
+const filteredProducts =
+products.filter(product =>
+product.category === category
+);
+
+displayProducts(filteredProducts);
+
+}
+
+function addToCart(id){
+
+const product =
+products.find(item => item.id === id);
+
+cart.push(product);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCart();
+
+}
+
+function updateCart(){
+
+const cartItems =
+document.getElementById("cartItems");
+
+const total =
+document.getElementById("total");
+
+cartItems.innerHTML="";
+
+let sum = 0;
+
+cart.forEach((item,index)=>{
+
+sum += item.price;
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<span>
+${item.name}
+</span>
+
+<button
+class="btn btn-danger btn-sm"
+onclick="removeItem(${index})">
+
+X
+
+</button>
+
+</div>
+
+`;
+
+});
+
+total.innerText = sum;
+
+}
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+updateCart();
+
+}
+
+function checkout(){
+
+if(cart.length === 0){
+
+alert("Your cart is empty!");
+
+return;
+
+}
+
+let totalAmount = 0;
+
+cart.forEach(item => {
+
+totalAmount += item.price;
+
+});
+
+alert(
+"Order Placed Successfully!\n\nTotal Amount: $" +
+totalAmount
+);
+
+cart = [];
+
+localStorage.removeItem("cart");
+
+updateCart();
+
+}
+
+document
+.getElementById("searchInput")
+.addEventListener("keyup",function(){
+
+const searchValue =
+this.value.toLowerCase();
+
+const filteredProducts =
+products.filter(product =>
+
+product.name
+.toLowerCase()
+.includes(searchValue)
+
+);
+
+displayProducts(filteredProducts);
+
+});
+
+document
+.getElementById("contactForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const name =
+document.getElementById("name").value;
+
+const email =
+document.getElementById("email").value;
+
+const message =
+document.getElementById("message").value;
+
+if(
+name === "" ||
+email === "" ||
+message === ""
+){
+
+alert(
+"Please fill all fields."
+);
+
+return;
+
+}
+
+alert(
+"Message Sent Successfully!"
+);
+
+this.reset();
+
+});
+
+displayProducts(products);
+updateCart();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
